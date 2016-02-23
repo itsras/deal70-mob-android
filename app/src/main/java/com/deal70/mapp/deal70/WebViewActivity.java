@@ -31,7 +31,7 @@ public class WebViewActivity extends Activity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                // show you progress image
+                // show you progress bar
                 progressBar.setProgress(0);
                 progressBar.show();
 
@@ -40,7 +40,7 @@ public class WebViewActivity extends Activity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                // hide your progress image
+                // hide your progress bar
                 progressBar.setProgress(100);
                 progressBar.hide();
                 super.onPageFinished(view, url);
