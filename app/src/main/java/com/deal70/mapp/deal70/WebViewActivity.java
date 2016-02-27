@@ -1,27 +1,24 @@
 package com.deal70.mapp.deal70;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 public class WebViewActivity extends Activity {
 
     private WebView webView;
-    private ProgressDialog progressBar;
+    private ProgressBar progressBar;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
 
-        progressBar = new ProgressDialog(this);
-        progressBar.setMessage("Loading Deal70...");
-        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressBar.setIndeterminate(true);
-        progressBar.setProgress(0);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -33,7 +30,7 @@ public class WebViewActivity extends Activity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 // show you progress bar
                 progressBar.setProgress(0);
-                progressBar.show();
+                //progressBar.show();
 
                 super.onPageStarted(view, url, favicon);
             }
@@ -42,7 +39,7 @@ public class WebViewActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 // hide your progress bar
                 progressBar.setProgress(100);
-                progressBar.hide();
+                //progressBar.hide();
                 super.onPageFinished(view, url);
             }
         });
@@ -54,6 +51,24 @@ public class WebViewActivity extends Activity {
             WebViewActivity.this.progressBar.setProgress(newProgress);
             super.onProgressChanged(view, newProgress);
         }
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_BACK:
+                    if (webView.canGoBack()) {
+                        webView.goBack();
+                    } else {
+                        finish();
+                    }
+                    return true;
+            }
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

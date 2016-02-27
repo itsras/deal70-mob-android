@@ -3,8 +3,14 @@
     package="com.deal70.mapp.deal70">
 
     <!-- Permissions -->
+    <!-- Internet Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Network State Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- WiFi State Permissions -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
