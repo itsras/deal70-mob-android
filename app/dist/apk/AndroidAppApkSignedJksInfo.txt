@@ -1,0 +1,15 @@
+/app/dist/apk/deal70_mob_app_apk.jks
+Alias       :   deal70
+Password    :   1!Qdeal70
+Validity    :   25 Years
+F&L name    :   deal70.com
+OU          :   Engineering
+O           :   Deal70 Technologies Pvt Ltd
+City        :   Hyderabad
+ST          :   TL
+Country     :   IN
+
+
+
+
+
